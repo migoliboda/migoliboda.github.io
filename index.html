@@ -323,6 +323,9 @@
     }
 
     /* ─── PHOTO STRIP ───────────────────────────────────────────── */
+    .photo-wrapper {
+      position: relative;
+    }
     .photo-strip {
       display: flex;
       overflow-x: auto;
@@ -330,7 +333,31 @@
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       gap: 4px;
+      scrollbar-width: none;
     }
+    .photo-strip::-webkit-scrollbar { display: none; }
+    .photo-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: opacity 0.3s, background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-arrow:hover { background: rgba(0,0,0,0.65); }
+    .photo-arrow.hidden { opacity: 0; pointer-events: none; }
+    .photo-arrow-left  { left: 10px; }
+    .photo-arrow-right { right: 10px; }
     .photo-item {
       flex: 0 0 auto;
       position: relative;
@@ -592,28 +619,45 @@
   <!-- ══════════════════════════════════════════════════
        PHOTO STRIP
   ══════════════════════════════════════════════════ -->
-  <div class="photo-strip">
-    <div class="photo-item">
-      <img src="images/foto1.jpeg" alt="">
-      <span class="photo-year">2016</span>
+  <div class="photo-wrapper">
+    <button class="photo-arrow photo-arrow-left hidden" aria-label="Previous">&#8592;</button>
+    <div class="photo-strip" id="photoStrip">
+      <div class="photo-item">
+        <img src="images/foto1.jpeg" alt="">
+        <span class="photo-year">2016</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/foto2.jpeg" alt="">
+        <span class="photo-year">2017</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/foto3.JPG" alt="">
+        <span class="photo-year">2018</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/foto4.jpg" alt="">
+        <span class="photo-year">2019</span>
+      </div>
+      <div class="photo-item">
+        <img src="images/foto5.jpg" alt="">
+        <span class="photo-year">2023</span>
+      </div>
     </div>
-    <div class="photo-item">
-      <img src="images/foto2.jpeg" alt="">
-      <span class="photo-year">2017</span>
-    </div>
-    <div class="photo-item">
-      <img src="images/foto3.JPG" alt="">
-      <span class="photo-year">2018</span>
-    </div>
-    <div class="photo-item">
-      <img src="images/foto4.jpg" alt="">
-      <span class="photo-year">2019</span>
-    </div>
-    <div class="photo-item">
-      <img src="images/foto5.jpg" alt="">
-      <span class="photo-year">2023</span>
-    </div>
+    <button class="photo-arrow photo-arrow-right" aria-label="Next">&#8594;</button>
   </div>
+  <script>
+    const strip = document.getElementById('photoStrip');
+    const btnLeft = document.querySelector('.photo-arrow-left');
+    const btnRight = document.querySelector('.photo-arrow-right');
+    function updateArrows() {
+      btnLeft.classList.toggle('hidden', strip.scrollLeft <= 0);
+      btnRight.classList.toggle('hidden', strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1);
+    }
+    btnLeft.addEventListener('click', () => { strip.scrollBy({ left: -320, behavior: 'smooth' }); });
+    btnRight.addEventListener('click', () => { strip.scrollBy({ left: 320, behavior: 'smooth' }); });
+    strip.addEventListener('scroll', updateArrows);
+    updateArrows();
+  </script>
 
   <!-- ══════════════════════════════════════════════════
        FOOTER
