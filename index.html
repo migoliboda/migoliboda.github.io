@@ -322,6 +322,20 @@
       margin: 2.2rem auto;
     }
 
+    /* ─── PHOTO STRIP ───────────────────────────────────────────── */
+    .photo-strip {
+      display: flex;
+      height: 280px;
+      overflow: hidden;
+    }
+    .photo-strip img {
+      flex: 1;
+      width: 0;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
     /* ─── FOOTER ────────────────────────────────────────────────── */
     footer {
       background: var(--text);
@@ -555,6 +569,17 @@
     </div>
   </section>
 
+
+  <!-- ══════════════════════════════════════════════════
+       PHOTO STRIP
+  ══════════════════════════════════════════════════ -->
+  <div class="photo-strip">
+    <img src="images/foto1.jpeg" alt="">
+    <img src="images/foto2.jpeg" alt="">
+    <img src="images/foto3.jpeg" alt="">
+    <img src="images/foto4.jpg" alt="">
+    <img src="images/foto5.jpg" alt="">
+  </div>
 
   <!-- ══════════════════════════════════════════════════
        FOOTER
