@@ -325,14 +325,17 @@
     /* ─── PHOTO STRIP ───────────────────────────────────────────── */
     .photo-strip {
       display: flex;
-      height: 280px;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 4px;
     }
     .photo-strip img {
-      flex: 1;
-      width: 0;
-      object-fit: cover;
-      object-position: center;
+      flex: 0 0 auto;
+      height: 320px;
+      width: auto;
+      scroll-snap-align: start;
       display: block;
     }
 
