@@ -331,12 +331,28 @@
       -webkit-overflow-scrolling: touch;
       gap: 4px;
     }
-    .photo-strip img {
+    .photo-item {
       flex: 0 0 auto;
+      position: relative;
+      scroll-snap-align: start;
+    }
+    .photo-strip img {
       height: 320px;
       width: auto;
-      scroll-snap-align: start;
       display: block;
+    }
+    .photo-year {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      padding: 5px 14px;
+      border-radius: 20px;
+      pointer-events: none;
     }
 
     /* ─── FOOTER ────────────────────────────────────────────────── */
@@ -577,11 +593,26 @@
        PHOTO STRIP
   ══════════════════════════════════════════════════ -->
   <div class="photo-strip">
-    <img src="images/foto1.jpeg" alt="">
-    <img src="images/foto2.jpeg" alt="">
-    <img src="images/foto3.jpeg" alt="">
-    <img src="images/foto4.jpg" alt="">
-    <img src="images/foto5.jpg" alt="">
+    <div class="photo-item">
+      <img src="images/foto1.jpeg" alt="">
+      <span class="photo-year">2016</span>
+    </div>
+    <div class="photo-item">
+      <img src="images/foto2.jpeg" alt="">
+      <span class="photo-year">2017</span>
+    </div>
+    <div class="photo-item">
+      <img src="images/foto3.JPG" alt="">
+      <span class="photo-year">2018</span>
+    </div>
+    <div class="photo-item">
+      <img src="images/foto4.jpg" alt="">
+      <span class="photo-year">2019</span>
+    </div>
+    <div class="photo-item">
+      <img src="images/foto5.jpg" alt="">
+      <span class="photo-year">2023</span>
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════════════
