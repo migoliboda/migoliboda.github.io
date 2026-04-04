@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olivia &amp; Miguel · 4 juliol 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:      #FDF6EC;
+      --ivory-dark: #F5EAD8;
+      --blush:      #E8C4B8;
+      --blush-light:#F5E2DA;
+      --blush-pale: #FAF0EC;
+      --gold:       #C9A96E;
+      --gold-dark:  #A8834A;
+      --rose:       #A0705A;
+      --text:       #3D2B1F;
+      --text-soft:  #7A5C4F;
+      --divider:    rgba(201,169,110,0.35);
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Lato', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ─── Typography helpers ────────────────────────────────────── */
+    .serif { font-family: var(--font-serif); }
+
+    h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; letter-spacing: 0.02em; }
+
+    /* ─── Section wrapper ───────────────────────────────────────── */
+    .section {
+      padding: 5rem 1.5rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      min-height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Carousel slides */
+    .carousel-track {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      /* SVG placeholder background — replaced by real <img> when photos exist */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide.active { opacity: 1; }
+
+    /* Placeholder SVG fills for when photos are missing */
+    .carousel-slide.placeholder {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 12vw, 7rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Gradient overlay so text is readable */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(30,10,0,0.05) 0%,
+        rgba(30,10,0,0.10) 40%,
+        rgba(30,10,0,0.55) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+      padding: 0 1.5rem 4rem;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+    }
+
+    .hero-names {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 9vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-ampersand {
+      font-style: italic;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .hero-date {
+      margin-top: 0.6rem;
+      font-family: var(--font-serif);
+      font-size: clamp(0.95rem, 3vw, 1.3rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* Carousel dots */
+    .carousel-dots {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      border: none;
+      padding: 0;
+    }
+
+    .dot.active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+
+    /* ─── SVG Divider ───────────────────────────────────────────── */
+    .divider {
+      display: block;
+      margin: 0 auto 3.5rem;
+      width: 160px;
+      opacity: 0.6;
+    }
+
+    /* ─── DETAILS section ───────────────────────────────────────── */
+    #details {
+      background: var(--ivory);
+      text-align: center;
+    }
+
+    #details h2 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      margin-bottom: 2.5rem;
+    }
+
+    .lang-block {
+      margin-bottom: 2rem;
+    }
+
+    .lang-label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .details-info {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    .details-info .highlight {
+      color: var(--rose);
+      font-weight: 400;
+    }
+
+    .lang-sep {
+      width: 40px;
+      height: 1px;
+      background: var(--divider);
+      margin: 1.8rem auto;
+    }
+
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+      padding: 0.75rem 2rem;
+      border: 1.5px solid var(--gold);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--gold-dark);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .map-btn:hover, .map-btn:focus-visible {
+      background: var(--gold);
+      color: #fff;
+      outline: none;
+    }
+
+    .map-btn svg {
+      flex-shrink: 0;
+    }
+
+    /* ─── GIFT section ──────────────────────────────────────────── */
+    #gift {
+      background: var(--blush-pale);
+    }
+
+    #gift h2 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .gift-lang-block {
+      margin-bottom: 2.4rem;
+    }
+
+    .gift-lang-block p {
+      font-size: clamp(0.9rem, 2.4vw, 1rem);
+      color: var(--text-soft);
+      margin-bottom: 1.2rem;
+    }
+
+    .gift-card {
+      background: #fff;
+      border: 1px solid var(--blush);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .gift-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.75rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .gift-row .label {
+      font-weight: 400;
+      color: var(--text-soft);
+      min-width: 7rem;
+    }
+
+    .gift-row .value {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+    }
+
+    .iban-value {
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+
+    .gift-close {
+      margin-top: 1rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      color: var(--rose);
+    }
+
+    .gift-lang-sep {
+      width: 60px;
+      height: 1px;
+      background: var(--blush);
+      margin: 2.2rem auto;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      line-height: 2.1;
+    }
+
+    footer .footer-sep {
+      display: inline-block;
+      width: 1px;
+      height: 0.9em;
+      background: rgba(255,255,255,0.25);
+      vertical-align: middle;
+      margin: 0 1rem;
+    }
+
+    footer .hearts {
+      display: block;
+      margin-top: 1.2rem;
+      font-style: normal;
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      letter-spacing: 0.5em;
+      opacity: 0.35;
+    }
+
+    /* ─── Responsive tweaks ─────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .section { padding: 3.5rem 1.25rem; }
+
+      .gift-row { flex-direction: column; gap: 0.1rem; }
+      .gift-row .label { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       HERO — photo carousel
+  ══════════════════════════════════════════════════ -->
+  <section id="hero" aria-label="Foto de la parella">
+    <div class="carousel-track" id="carouselTrack"></div>
+
+    <div class="hero-text">
+      <h1 class="hero-names">Olivia <span class="hero-ampersand">&amp;</span> Miguel</h1>
+      <p class="hero-date">4 · VII · 2026</p>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Diapositives"></div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       DETAILS
+  ══════════════════════════════════════════════════ -->
+  <section id="details">
+    <div class="section">
+
+      <!-- SVG floral divider -->
+      <svg class="divider" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="0" y1="12" x2="55" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <line x1="105" y1="12" x2="160" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <!-- small flower -->
+        <circle cx="80" cy="12" r="2.5" fill="#C9A96E" fill-opacity="0.5"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(0 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(60 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(120 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(180 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(240 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(300 80 12)"/>
+        <!-- leaf left -->
+        <path d="M62 12 Q65 7 70 12 Q65 17 62 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+        <!-- leaf right -->
+        <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+      </svg>
+
+      <!-- Catalan -->
+      <div class="lang-block">
+        <p class="lang-label">Català</p>
+        <div class="details-info">
+          <span class="highlight">Dissabte, 4 de juliol de 2026</span><br/>
+          A les <span class="highlight">18:30 h</span><br/>
+          <span class="highlight">Finca Binissatí</span>
+        </div>
+      </div>
+
+      <div class="lang-sep"></div>
+
+      <!-- Spanish -->
+      <div class="lang-block">
+        <p class="lang-label">Español</p>
+        <div class="details-info">
+          <span class="highlight">Sábado, 4 de julio de 2026</span><br/>
+          A las <span class="highlight">18:30 h</span><br/>
+          <span class="highlight">Finca Binissatí</span>
+        </div>
+      </div>
+
+      <div class="lang-sep"></div>
+
+      <!-- English -->
+      <div class="lang-block">
+        <p class="lang-label">English</p>
+        <div class="details-info">
+          <span class="highlight">Saturday, 4 July 2026</span><br/>
+          At <span class="highlight">6:30 pm</span><br/>
+          <span class="highlight">Finca Binissatí</span>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <a class="map-btn"
+           href="https://maps.app.goo.gl/YziriGpy518DN6p26"
+           target="_blank"
+           rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Com arribar · Cómo llegar · Get directions
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       GIFT
+  ══════════════════════════════════════════════════ -->
+  <section id="gift">
+    <div class="section">
+
+      <!-- SVG divider (mirrored variant) -->
+      <svg class="divider" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="0" y1="12" x2="55" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <line x1="105" y1="12" x2="160" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <circle cx="80" cy="12" r="2.5" fill="#C9A96E" fill-opacity="0.5"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(0 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(60 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(120 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(180 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(240 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(300 80 12)"/>
+        <path d="M62 12 Q65 7 70 12 Q65 17 62 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+        <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+      </svg>
+
+      <h2 style="text-align:center; margin-bottom:2.5rem;">
+        <span style="font-style:italic;">Un regal · Un regalo · A gift</span>
+      </h2>
+
+      <!-- ── Catalan ── -->
+      <div class="gift-lang-block">
+        <p class="lang-label">Català</p>
+        <p>Si voleu fer-nos un regal, la millor opció és contribuir al nostre viatge de nuvis. Tenim molts plans (i poca vergonya per demanar-ho). Podeu fer una transferència a:</p>
+
+        <div class="gift-card">
+          <div class="gift-row">
+            <span class="label">Beneficiari</span>
+            <span class="value">M Mir García &amp; O Prior Palomares</span>
+          </div>
+          <div class="gift-row">
+            <span class="label">IBAN</span>
+            <span class="value iban-value">ES61 1583 0001 1691 5850 0360</span>
+          </div>
+          <div class="gift-row">
+            <span class="label">BIC/SWIFT</span>
+            <span class="value">REVOESM2</span>
+          </div>
+        </div>
+
+        <p class="gift-close">Amb el vostre amor (i una mica d'ajuda), farem el viatge dels nostres somnis. Gràcies de tot cor! 🌍</p>
+      </div>
+
+      <div class="gift-lang-sep"></div>
+
+      <!-- ── Spanish ── -->
+      <div class="gift-lang-block">
+        <p class="lang-label">Español</p>
+        <p>Si queréis hacernos un regalo, lo que más nos haría ilusión es contribuir a nuestro viaje de novios. Llevamos meses planeándolo y, sinceramente, necesitamos toda la ayuda posible (y no tenemos ninguna vergüenza en pedirlo). Podéis hacer una transferencia a:</p>
+
+        <div class="gift-card">
+          <div class="gift-row">
+            <span class="label">Beneficiario</span>
+            <span class="value">M Mir García &amp; O Prior Palomares</span>
+          </div>
+          <div class="gift-row">
+            <span class="label">IBAN</span>
+            <span class="value iban-value">ES61 1583 0001 1691 5850 0360</span>
+          </div>
+          <div class="gift-row">
+            <span class="label">BIC/SWIFT</span>
+            <span class="value">REVOESM2</span>
+          </div>
+        </div>
+
+        <p class="gift-close">Con vuestro cariño (y un poco de combustible extra), haremos el viaje de nuestra vida. ¡Mil gracias! ✈️</p>
+      </div>
+
+      <div class="gift-lang-sep"></div>
+
+      <!-- ── English ── -->
+      <div class="gift-lang-block">
+        <p class="lang-label">English</p>
+        <p>If you'd like to give us a gift, the best thing you can do is help fund our honeymoon. We have big plans and zero shame in admitting we need a little help pulling them off. You can make a transfer to:</p>
+
+        <div class="gift-card">
+          <div class="gift-row">
+            <span class="label">Beneficiary</span>
+            <span class="value">M Mir García &amp; O Prior Palomares</span>
+          </div>
+          <div class="gift-row">
+            <span class="label">IBAN</span>
+            <span class="value iban-value">ES61 1583 0001 1691 5850 0360</span>
+          </div>
+          <div class="gift-row">
+            <span class="label">BIC/SWIFT</span>
+            <span class="value">REVOESM2</span>
+          </div>
+        </div>
+
+        <p class="gift-close">With your love (and a generous contribution), we'll make it one for the books. Thank you so much! 🌏</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <footer>
+    <p>
+      Gràcies per ser part del nostre dia
+      <span class="footer-sep"></span>
+      Gracias por ser parte de nuestro día
+      <span class="footer-sep"></span>
+      Thank you for being part of our day
+    </p>
+    <span class="hearts">♡ ♡ ♡</span>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════════
+       JS — Carousel
+  ══════════════════════════════════════════════════ -->
+  <script>
+    /* ─────────────────────────────────────────────────────────────
+       PHOTO CAROUSEL
+       To add real photos: put photo1.jpg, photo2.jpg, … next to
+       index.html and add the filenames to the `photos` array below.
+       Leave the array empty (or with only placeholders) to keep the
+       warm-tone placeholder tiles.
+    ───────────────────────────────────────────────────────────── */
+
+    const photos = [
+      // 'photo1.jpg',
+      // 'photo2.jpg',
+      // 'photo3.jpg',
+    ];
+
+    /* Warm placeholder colours used when no photos are provided */
+    const placeholderColors = [
+      ['#D4A58A', '#B07A62'],   // warm terracotta
+      ['#C4956A', '#9A6B45'],   // amber
+      ['#D9B8A0', '#B08060'],   // sand
+      ['#C8A090', '#A07060'],   // dusty rose
+      ['#BFA882', '#8F7852'],   // khaki gold
+    ];
+
+    const track     = document.getElementById('carouselTrack');
+    const dotsWrap  = document.getElementById('carouselDots');
+
+    const usePhotos   = photos.length > 0;
+    const slideCount  = usePhotos ? photos.length : placeholderColors.length;
+
+    let currentIndex = 0;
+    let timer        = null;
+
+    /* Build slides */
+    const slides = [];
+    for (let i = 0; i < slideCount; i++) {
+      let el;
+      if (usePhotos) {
+        el = document.createElement('img');
+        el.className   = 'carousel-slide';
+        el.src         = photos[i];
+        el.alt         = `Foto ${i + 1} d'Olivia i Miguel`;
+        el.draggable   = false;
+      } else {
+        el = document.createElement('div');
+        el.className   = 'carousel-slide placeholder';
+        const [c1, c2] = placeholderColors[i % placeholderColors.length];
+        el.style.background = `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`;
+        el.textContent = 'O & M';
+      }
+      track.appendChild(el);
+      slides.push(el);
+    }
+
+    /* Build dots */
+    const dots = [];
+    for (let i = 0; i < slideCount; i++) {
+      const btn = document.createElement('button');
+      btn.className  = 'dot';
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-label', `Diapositiva ${i + 1}`);
+      btn.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(btn);
+      dots.push(btn);
+    }
+
+    function goTo(index) {
+      slides[currentIndex].classList.remove('active');
+      dots[currentIndex].classList.remove('active');
+      currentIndex = (index + slideCount) % slideCount;
+      slides[currentIndex].classList.add('active');
+      dots[currentIndex].classList.add('active');
+      resetTimer();
+    }
+
+    function next() { goTo(currentIndex + 1); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, 4000);
+    }
+
+    /* Tap / click to advance */
+    track.addEventListener('click', next);
+
+    /* Touch swipe support */
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) dx < 0 ? next() : goTo(currentIndex - 1);
+    }, { passive: true });
+
+    /* Pause on hover (desktop) */
+    track.addEventListener('mouseenter', () => clearInterval(timer));
+    track.addEventListener('mouseleave', resetTimer);
+
+    /* Kick off */
+    goTo(0);
+  </script>
+
+</body>
+</html>
