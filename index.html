@@ -132,9 +132,9 @@
 
     .hero-monogram {
       position: absolute;
-      top: 50%;
+      top: 2.5rem;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       z-index: 1;
       font-family: var(--font-serif);
       font-size: clamp(3rem, 12vw, 7rem);
@@ -281,6 +281,42 @@
 
     .map-btn svg {
       flex-shrink: 0;
+    }
+
+    /* ─── TRANSPORT / DRESSCODE / ACCOMMODATION sections ───────── */
+    #transport  { background: var(--ivory); text-align: center; }
+    #dresscode  { background: var(--blush-pale); text-align: center; }
+    #accommodation { background: var(--ivory); text-align: center; }
+
+    .section-lang-block { margin-bottom: 2.4rem; }
+    .section-lang-block p {
+      font-size: clamp(0.9rem, 2.4vw, 1rem);
+      color: var(--text-soft);
+      margin-bottom: 0.8rem;
+      text-align: left;
+    }
+
+    .attach-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.4rem 0.3rem;
+      padding: 0.65rem 1.6rem;
+      border: 1.5px solid var(--gold);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--gold-dark);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+    .attach-btn:hover, .attach-btn:focus-visible {
+      background: var(--gold);
+      color: #fff;
+      outline: none;
     }
 
     /* ─── GIFT section ──────────────────────────────────────────── */
@@ -483,6 +519,141 @@
         </a>
       </div>
 
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       TRANSPORT
+  ══════════════════════════════════════════════════ -->
+  <section id="transport">
+    <div class="section">
+      <svg class="divider" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="0" y1="12" x2="55" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <line x1="105" y1="12" x2="160" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <circle cx="80" cy="12" r="2.5" fill="#C9A96E" fill-opacity="0.5"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(0 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(60 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(120 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(180 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(240 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(300 80 12)"/>
+        <path d="M62 12 Q65 7 70 12 Q65 17 62 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+        <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+      </svg>
+
+      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Transport · Transporte · Transport</span></h2>
+
+      <div class="section-lang-block">
+        <p class="lang-label">Català</p>
+        <p>No hi haurà autobusos, per tant, cada persona haurà d'organitzar el seu propi transport. Hi ha aparcament disponible a la finca. La festa acabarà a les <strong>3:30 h</strong>.</p>
+      </div>
+      <div class="lang-sep"></div>
+      <div class="section-lang-block">
+        <p class="lang-label">Español</p>
+        <p>No habrá autobuses, por lo que cada persona deberá organizar su propio transporte. Hay aparcamiento disponible en la finca. La fiesta terminará a las <strong>3:30 h</strong>.</p>
+      </div>
+      <div class="lang-sep"></div>
+      <div class="section-lang-block">
+        <p class="lang-label">English</p>
+        <p>There will be no buses, so everyone will need to arrange their own transportation. Parking is available at the venue. The event will finish at <strong>3:30 am</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       DRESSCODE
+  ══════════════════════════════════════════════════ -->
+  <section id="dresscode">
+    <div class="section">
+      <svg class="divider" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="0" y1="12" x2="55" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <line x1="105" y1="12" x2="160" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <circle cx="80" cy="12" r="2.5" fill="#C9A96E" fill-opacity="0.5"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(0 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(60 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(120 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(180 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(240 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(300 80 12)"/>
+        <path d="M62 12 Q65 7 70 12 Q65 17 62 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+        <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+      </svg>
+
+      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Dress code · Codi de vestimenta · Código de vestimenta</span></h2>
+
+      <div class="section-lang-block">
+        <p class="lang-label">Català</p>
+        <p>Probablement farà calor i tot l'acte és a l'aire lliure. A la nit pot refredar una mica.</p>
+        <p>No hi ha normes ni protocol. Recordeu que és un casament i volem que us sentiu bé, ho passeu bé i que recordeu el dia.</p>
+        <p><strong>Per a les noies:</strong> tots els colors estan permesos excepte el blanc o colors molt clars. Us recomanem taló quadrat i/o sabata còmoda, ja que algunes zones no estan perfectament empedrades.</p>
+        <p><strong>Per als nois:</strong> vestit formal o de lli. No és obligatori portar corbata, americana, etc.</p>
+      </div>
+      <div class="lang-sep"></div>
+      <div class="section-lang-block">
+        <p class="lang-label">Español</p>
+        <p>Probablemente hará calor y el evento es completamente al aire libre. Por la noche puede que refresque un poco.</p>
+        <p>No hay normas ni protocolo. Solo tened en cuenta que es una boda y queremos que os sintáis bien, que lo paséis en grande y que recordéis el día.</p>
+        <p><strong>Para las chicas:</strong> todos los colores están permitidos excepto el blanco o colores muy claros. Independientemente de que queráis llevar calzado de repuesto, aconsejamos llevar tacón cuadrado y/o zapato cómodo porque algunas zonas no están perfectamente empedradas.</p>
+        <p><strong>Para los chicos:</strong> traje formal o de lino. No es obligatorio llevar corbata, americana, etc.</p>
+      </div>
+      <div class="lang-sep"></div>
+      <div class="section-lang-block">
+        <p class="lang-label">English</p>
+        <p>It will probably be hot and the whole event is outdoors. It may get a little chillier during the night.</p>
+        <p>There are no rules or dress code to follow. Just keep in mind that it's a wedding and we want you to feel good, have a wonderful time and remember the day.</p>
+        <p><strong>For the ladies:</strong> all colors are welcome except white or very light shades. Whether or not you plan to bring spare shoes, we recommend square heels and/or comfortable footwear as some areas are not perfectly paved.</p>
+        <p><strong>For the gentlemen:</strong> formal or linen suit. Tie, jacket etc. are not required.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       ACCOMMODATION
+  ══════════════════════════════════════════════════ -->
+  <section id="accommodation">
+    <div class="section">
+      <svg class="divider" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="0" y1="12" x2="55" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <line x1="105" y1="12" x2="160" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
+        <circle cx="80" cy="12" r="2.5" fill="#C9A96E" fill-opacity="0.5"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(0 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(60 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(120 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(180 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(240 80 12)"/>
+        <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(300 80 12)"/>
+        <path d="M62 12 Q65 7 70 12 Q65 17 62 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+        <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
+      </svg>
+
+      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Allotjament · Alojamiento · Accommodation</span></h2>
+
+      <div class="section-lang-block">
+        <p class="lang-label">Català</p>
+        <p>Si encara no teniu allotjament, podeu consultar els fitxers adjunts amb les nostres recomanacions. I si voleu planificar la resta de la vostra estada i necessiteu consell, no dubteu a preguntar-nos!</p>
+      </div>
+      <div class="lang-sep"></div>
+      <div class="section-lang-block">
+        <p class="lang-label">Español</p>
+        <p>Si todavía no tenéis alojamiento, podéis consultar los archivos adjuntos con nuestras recomendaciones. Y si queréis planificar el resto de vuestra estancia y necesitáis consejo, ¡no dudéis en preguntarnos!</p>
+      </div>
+      <div class="lang-sep"></div>
+      <div class="section-lang-block">
+        <p class="lang-label">English</p>
+        <p>If you still need to arrange accommodation, check the attached files for our recommendations. And if you'd like help planning the rest of your stay, feel free to ask us!</p>
+      </div>
+
+      <div style="text-align:center; margin-top:2rem;">
+        <a class="attach-btn" href="attachments/MIGOLI_BODA_INFO_WEB.pdf" target="_blank" rel="noopener noreferrer">
+          &#128196; Info Español / Català
+        </a>
+        <a class="attach-btn" href="attachments/MIGOLI_WEDDING_INFO_WEB.pdf" target="_blank" rel="noopener noreferrer">
+          &#128196; Info English
+        </a>
+      </div>
     </div>
   </section>
 
