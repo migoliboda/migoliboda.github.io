@@ -107,11 +107,42 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(30,10,0,0.05) 0%,
-        rgba(30,10,0,0.10) 40%,
-        rgba(30,10,0,0.55) 100%
+        rgba(30,10,0,0.15) 0%,
+        rgba(30,10,0,0.25) 40%,
+        rgba(30,10,0,0.70) 100%
       );
       pointer-events: none;
+    }
+
+    .carousel-slide-year {
+      position: absolute;
+      top: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      padding: 6px 20px;
+      border-radius: 20px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-monogram {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 12vw, 7rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.45);
+      pointer-events: none;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
 
     .hero-text {
@@ -322,66 +353,6 @@
       margin: 2.2rem auto;
     }
 
-    /* ─── PHOTO STRIP ───────────────────────────────────────────── */
-    .photo-wrapper {
-      position: relative;
-    }
-    .photo-strip {
-      display: flex;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      gap: 4px;
-      scrollbar-width: none;
-    }
-    .photo-strip::-webkit-scrollbar { display: none; }
-    .photo-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.4);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      font-size: 1.3rem;
-      cursor: pointer;
-      z-index: 10;
-      transition: opacity 0.3s, background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .photo-arrow:hover { background: rgba(0,0,0,0.65); }
-    .photo-arrow.hidden { opacity: 0; pointer-events: none; }
-    .photo-arrow-left  { left: 10px; }
-    .photo-arrow-right { right: 10px; }
-    .photo-item {
-      flex: 0 0 auto;
-      position: relative;
-      scroll-snap-align: start;
-    }
-    .photo-strip img {
-      height: 320px;
-      width: auto;
-      display: block;
-    }
-    .photo-year {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.45);
-      color: #fff;
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      padding: 5px 14px;
-      border-radius: 20px;
-      pointer-events: none;
-    }
-
     /* ─── FOOTER ────────────────────────────────────────────────── */
     footer {
       background: var(--text);
@@ -429,6 +400,8 @@
   ══════════════════════════════════════════════════ -->
   <section id="hero" aria-label="Foto de la parella">
     <div class="carousel-track" id="carouselTrack"></div>
+
+    <div class="hero-monogram">O &amp; M</div>
 
     <div class="hero-text">
       <h1 class="hero-names">Olivia <span class="hero-ampersand">&amp;</span> Miguel</h1>
@@ -616,48 +589,6 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════════════
-       PHOTO STRIP
-  ══════════════════════════════════════════════════ -->
-  <div class="photo-wrapper">
-    <button class="photo-arrow photo-arrow-left hidden" aria-label="Previous">&#8592;</button>
-    <div class="photo-strip" id="photoStrip">
-      <div class="photo-item">
-        <img src="images/foto1.jpeg" alt="">
-        <span class="photo-year">2016</span>
-      </div>
-      <div class="photo-item">
-        <img src="images/foto2.jpeg" alt="">
-        <span class="photo-year">2017</span>
-      </div>
-      <div class="photo-item">
-        <img src="images/foto3.JPG" alt="">
-        <span class="photo-year">2018</span>
-      </div>
-      <div class="photo-item">
-        <img src="images/foto4.jpg" alt="">
-        <span class="photo-year">2019</span>
-      </div>
-      <div class="photo-item">
-        <img src="images/foto5.jpg" alt="">
-        <span class="photo-year">2023</span>
-      </div>
-    </div>
-    <button class="photo-arrow photo-arrow-right" aria-label="Next">&#8594;</button>
-  </div>
-  <script>
-    const strip = document.getElementById('photoStrip');
-    const btnLeft = document.querySelector('.photo-arrow-left');
-    const btnRight = document.querySelector('.photo-arrow-right');
-    function updateArrows() {
-      btnLeft.classList.toggle('hidden', strip.scrollLeft <= 0);
-      btnRight.classList.toggle('hidden', strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1);
-    }
-    btnLeft.addEventListener('click', () => { strip.scrollBy({ left: -320, behavior: 'smooth' }); });
-    btnRight.addEventListener('click', () => { strip.scrollBy({ left: 320, behavior: 'smooth' }); });
-    strip.addEventListener('scroll', updateArrows);
-    updateArrows();
-  </script>
 
   <!-- ══════════════════════════════════════════════════
        FOOTER
@@ -687,10 +618,13 @@
     ───────────────────────────────────────────────────────────── */
 
     const photos = [
-      // 'photo1.jpg',
-      // 'photo2.jpg',
-      // 'photo3.jpg',
+      'images/foto1.jpeg',
+      'images/foto2.jpeg',
+      'images/foto3.JPG',
+      'images/foto4.jpg',
+      'images/foto5.jpg',
     ];
+    const photoYears = ['2016', '2017', '2018', '2019', '2023'];
 
     /* Warm placeholder colours used when no photos are provided */
     const placeholderColors = [
@@ -715,11 +649,29 @@
     for (let i = 0; i < slideCount; i++) {
       let el;
       if (usePhotos) {
-        el = document.createElement('img');
-        el.className   = 'carousel-slide';
-        el.src         = photos[i];
-        el.alt         = `Foto ${i + 1} d'Olivia i Miguel`;
-        el.draggable   = false;
+        el = document.createElement('div');
+        el.className = 'carousel-slide';
+        const img = document.createElement('img');
+        img.src = photos[i];
+        img.alt = `Foto ${i + 1} d'Olivia i Miguel`;
+        img.draggable = false;
+        img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;';
+        img.addEventListener('load', function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = 50; canvas.height = 50;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, 50, 50);
+          const d = ctx.getImageData(0, 0, 50, 50).data;
+          let r = 0, g = 0, b = 0;
+          for (let j = 0; j < d.length; j += 4) { r += d[j]; g += d[j+1]; b += d[j+2]; }
+          const t = 50 * 50;
+          el.style.backgroundColor = `rgb(${Math.round(r/t)},${Math.round(g/t)},${Math.round(b/t)})`;
+        });
+        el.appendChild(img);
+        const yr = document.createElement('span');
+        yr.className = 'carousel-slide-year';
+        yr.textContent = photoYears[i];
+        el.appendChild(yr);
       } else {
         el = document.createElement('div');
         el.className   = 'carousel-slide placeholder';
