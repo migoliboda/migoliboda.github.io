@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="0; url=es/" />
-  <title>Olivia &amp; Miguel · 4 juliol 2026</title>
+  <title>Olivia &amp; Miguel · 4 July 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
@@ -84,7 +83,6 @@
       object-fit: cover;
       opacity: 0;
       transition: opacity 1.2s ease;
-      /* SVG placeholder background — replaced by real <img> when photos exist */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,7 +90,6 @@
 
     .carousel-slide.active { opacity: 1; }
 
-    /* Placeholder SVG fills for when photos are missing */
     .carousel-slide.placeholder {
       font-family: var(--font-serif);
       font-size: clamp(3rem, 12vw, 7rem);
@@ -101,7 +98,6 @@
       color: rgba(255,255,255,0.5);
     }
 
-    /* Gradient overlay so text is readable */
     #hero::after {
       content: '';
       position: absolute;
@@ -401,6 +397,36 @@
       margin: 2.2rem auto;
     }
 
+    /* ─── LANGUAGE SWITCHER ─────────────────────────────────────── */
+    .lang-switcher {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 3;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .lang-switcher a {
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      padding: 4px 2px;
+      transition: color 0.2s;
+    }
+    .lang-switcher a:hover { color: #fff; }
+    .lang-switcher a.active {
+      color: #fff;
+      border-bottom: 1.5px solid rgba(255,255,255,0.7);
+    }
+    .lang-switcher span {
+      color: rgba(255,255,255,0.25);
+      font-size: 0.6rem;
+    }
+
     /* ─── FOOTER ────────────────────────────────────────────────── */
     footer {
       background: var(--text);
@@ -446,7 +472,7 @@
   <!-- ══════════════════════════════════════════════════
        HERO — photo carousel
   ══════════════════════════════════════════════════ -->
-  <section id="hero" aria-label="Foto de la parella">
+  <section id="hero" aria-label="Photo of the couple">
     <div class="carousel-track" id="carouselTrack"></div>
 
     <div class="hero-monogram">O &amp; M</div>
@@ -456,7 +482,15 @@
       <p class="hero-date">4 · VII · 2026</p>
     </div>
 
-    <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Diapositives"></div>
+    <div class="lang-switcher">
+      <a href="../es/">ES</a>
+      <span>·</span>
+      <a href="../ca/">CA</a>
+      <span>·</span>
+      <a href="../en/" class="active">EN</a>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Slides"></div>
   </section>
 
 
@@ -470,7 +504,6 @@
       <svg class="divider" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <line x1="0" y1="12" x2="55" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
         <line x1="105" y1="12" x2="160" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
-        <!-- small flower -->
         <circle cx="80" cy="12" r="2.5" fill="#C9A96E" fill-opacity="0.5"/>
         <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(0 80 12)"/>
         <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(60 80 12)"/>
@@ -478,39 +511,13 @@
         <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(180 80 12)"/>
         <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(240 80 12)"/>
         <ellipse cx="80" cy="5.5" rx="2" ry="3.5" fill="#C9A96E" fill-opacity="0.35" transform="rotate(300 80 12)"/>
-        <!-- leaf left -->
         <path d="M62 12 Q65 7 70 12 Q65 17 62 12Z" fill="#C9A96E" fill-opacity="0.3"/>
-        <!-- leaf right -->
         <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
       </svg>
 
-      <!-- Catalan -->
+      <h2>Venue &amp; time</h2>
+
       <div class="lang-block">
-        <p class="lang-label">Català</p>
-        <div class="details-info">
-          <span class="highlight">Dissabte, 4 de juliol de 2026</span><br/>
-          A les <span class="highlight">18:30 h</span><br/>
-          <span class="highlight">Finca Binissatí</span>
-        </div>
-      </div>
-
-      <div class="lang-sep"></div>
-
-      <!-- Spanish -->
-      <div class="lang-block">
-        <p class="lang-label">Español</p>
-        <div class="details-info">
-          <span class="highlight">Sábado, 4 de julio de 2026</span><br/>
-          A las <span class="highlight">18:30 h</span><br/>
-          <span class="highlight">Finca Binissatí</span>
-        </div>
-      </div>
-
-      <div class="lang-sep"></div>
-
-      <!-- English -->
-      <div class="lang-block">
-        <p class="lang-label">English</p>
         <div class="details-info">
           <span class="highlight">Saturday, 4 July 2026</span><br/>
           At <span class="highlight">6:30 pm</span><br/>
@@ -527,7 +534,7 @@
             <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
-          Com arribar · Cómo llegar · Get directions
+          Get directions
         </a>
       </div>
 
@@ -554,20 +561,9 @@
         <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
       </svg>
 
-      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Transport · Transporte · Transport</span></h2>
+      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Transport</span></h2>
 
       <div class="section-lang-block">
-        <p class="lang-label">Català</p>
-        <p>No hi haurà autobusos, per tant, cada persona haurà d'organitzar el seu propi transport. Hi ha aparcament disponible a la finca. La festa acabarà a les <strong>3:30 h</strong>.</p>
-      </div>
-      <div class="lang-sep"></div>
-      <div class="section-lang-block">
-        <p class="lang-label">Español</p>
-        <p>No habrá autobuses, por lo que cada persona deberá organizar su propio transporte. Hay aparcamiento disponible en la finca. La fiesta terminará a las <strong>3:30 h</strong>.</p>
-      </div>
-      <div class="lang-sep"></div>
-      <div class="section-lang-block">
-        <p class="lang-label">English</p>
         <p>There will be no buses, so everyone will need to arrange their own transportation. Parking is available at the venue. The event will finish at <strong>3:30 am</strong>.</p>
       </div>
     </div>
@@ -593,26 +589,9 @@
         <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
       </svg>
 
-      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Dress code · Codi de vestimenta · Código de vestimenta</span></h2>
+      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Dress code</span></h2>
 
       <div class="section-lang-block">
-        <p class="lang-label">Català</p>
-        <p>Probablement farà calor i tot l'acte és a l'aire lliure. A la nit pot refredar una mica.</p>
-        <p>No hi ha normes ni protocol. Recordeu que és un casament i volem que us sentiu bé, ho passeu bé i que recordeu el dia.</p>
-        <p><strong>Per a les noies:</strong> tots els colors estan permesos excepte el blanc o colors molt clars. Us recomanem taló quadrat i/o sabata còmoda, ja que algunes zones no estan perfectament empedrades.</p>
-        <p><strong>Per als nois:</strong> vestit formal o de lli. No és obligatori portar corbata, americana, etc.</p>
-      </div>
-      <div class="lang-sep"></div>
-      <div class="section-lang-block">
-        <p class="lang-label">Español</p>
-        <p>Probablemente hará calor y el evento es completamente al aire libre. Por la noche puede que refresque un poco.</p>
-        <p>No hay normas ni protocolo. Solo tened en cuenta que es una boda y queremos que os sintáis bien, que lo paséis en grande y que recordéis el día.</p>
-        <p><strong>Para las chicas:</strong> todos los colores están permitidos excepto el blanco o colores muy claros. Independientemente de que queráis llevar calzado de repuesto, aconsejamos llevar tacón cuadrado y/o zapato cómodo porque algunas zonas no están perfectamente empedradas.</p>
-        <p><strong>Para los chicos:</strong> traje formal o de lino. No es obligatorio llevar corbata, americana, etc.</p>
-      </div>
-      <div class="lang-sep"></div>
-      <div class="section-lang-block">
-        <p class="lang-label">English</p>
         <p>It will probably be hot and the whole event is outdoors. It may get a little chillier during the night.</p>
         <p>There are no rules or dress code to follow. Just keep in mind that it's a wedding and we want you to feel good, have a wonderful time and remember the day.</p>
         <p><strong>For the ladies:</strong> all colors are welcome except white or very light shades. Whether or not you plan to bring spare shoes, we recommend square heels and/or comfortable footwear as some areas are not perfectly paved.</p>
@@ -641,28 +620,17 @@
         <path d="M98 12 Q95 7 90 12 Q95 17 98 12Z" fill="#C9A96E" fill-opacity="0.3"/>
       </svg>
 
-      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Allotjament · Alojamiento · Accommodation</span></h2>
+      <h2 style="text-align:center; margin-bottom:2.5rem;"><span style="font-style:italic;">Accommodation</span></h2>
 
       <div class="section-lang-block">
-        <p class="lang-label">Català</p>
-        <p>Si encara no teniu allotjament, podeu consultar els fitxers adjunts amb les nostres recomanacions. I si voleu planificar la resta de la vostra estada i necessiteu consell, no dubteu a preguntar-nos!</p>
-      </div>
-      <div class="lang-sep"></div>
-      <div class="section-lang-block">
-        <p class="lang-label">Español</p>
-        <p>Si todavía no tenéis alojamiento, podéis consultar los archivos adjuntos con nuestras recomendaciones. Y si queréis planificar el resto de vuestra estancia y necesitáis consejo, ¡no dudéis en preguntarnos!</p>
-      </div>
-      <div class="lang-sep"></div>
-      <div class="section-lang-block">
-        <p class="lang-label">English</p>
         <p>If you still need to arrange accommodation, check the attached files for our recommendations. And if you'd like help planning the rest of your stay, feel free to ask us!</p>
       </div>
 
       <div style="text-align:center; margin-top:2rem;">
-        <a class="attach-btn" href="attachments/MIGOLI_BODA_INFO_WEB.pdf" target="_blank" rel="noopener noreferrer">
+        <a class="attach-btn" href="../attachments/MIGOLI_BODA_INFO_WEB.pdf" target="_blank" rel="noopener noreferrer">
           &#128196; Info Español / Català
         </a>
-        <a class="attach-btn" href="attachments/MIGOLI_WEDDING_INFO_WEB.pdf" target="_blank" rel="noopener noreferrer">
+        <a class="attach-btn" href="../attachments/MIGOLI_WEDDING_INFO_WEB.pdf" target="_blank" rel="noopener noreferrer">
           &#128196; Info English
         </a>
       </div>
@@ -676,7 +644,6 @@
   <section id="gift">
     <div class="section">
 
-      <!-- SVG divider (mirrored variant) -->
       <svg class="divider" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <line x1="0" y1="12" x2="55" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
         <line x1="105" y1="12" x2="160" y2="12" stroke="#C9A96E" stroke-width="0.8"/>
@@ -692,62 +659,11 @@
       </svg>
 
       <h2 style="text-align:center; margin-bottom:2.5rem;">
-        <span style="font-style:italic;">Regal · Regalo · Gift</span>
+        <span style="font-style:italic;">Gift</span>
       </h2>
-
-      <!-- ── Catalan ── -->
-      <div class="gift-lang-block">
-        <p class="lang-label">Català</p>
-        <p>Si voleu fer-nos un regal, la millor opció és contribuir al nostre viatge de nuvis. Tenim molts plans (i poca vergonya per demanar-ho). Podeu fer una transferència a:</p>
-
-        <div class="gift-card">
-          <div class="gift-row">
-            <span class="label">Beneficiari</span>
-            <span class="value">M Mir García &amp; O Prior Palomares</span>
-          </div>
-          <div class="gift-row">
-            <span class="label">IBAN</span>
-            <span class="value iban-value">ES61 1583 0001 1691 5850 0360</span>
-          </div>
-          <div class="gift-row">
-            <span class="label">BIC/SWIFT</span>
-            <span class="value">REVOESM2</span>
-          </div>
-        </div>
-
-        <p class="gift-close">Amb el vostre amor (i una mica d'ajuda), farem el viatge dels nostres somnis. Gràcies de tot cor! 🌍</p>
-      </div>
-
-      <div class="gift-lang-sep"></div>
-
-      <!-- ── Spanish ── -->
-      <div class="gift-lang-block">
-        <p class="lang-label">Español</p>
-        <p>Si queréis hacernos un regalo, lo que más nos haría ilusión es contribuir a nuestro viaje de novios. Tenemos mucho planes y poca vergüenza en admitir que necesitamos ayuda. Podéis hacernos una transferencia a:</p>
-
-        <div class="gift-card">
-          <div class="gift-row">
-            <span class="label">Beneficiario</span>
-            <span class="value">M Mir García &amp; O Prior Palomares</span>
-          </div>
-          <div class="gift-row">
-            <span class="label">IBAN</span>
-            <span class="value iban-value">ES61 1583 0001 1691 5850 0360</span>
-          </div>
-          <div class="gift-row">
-            <span class="label">BIC/SWIFT</span>
-            <span class="value">REVOESM2</span>
-          </div>
-        </div>
-
-        <p class="gift-close">Con vuestro cariño (y un poco de combustible extra), haremos el viaje de nuestra vida. ¡Mil gracias! ✈️</p>
-      </div>
-
-      <div class="gift-lang-sep"></div>
 
       <!-- ── English ── -->
       <div class="gift-lang-block">
-        <p class="lang-label">English</p>
         <p>If you'd like to give us a gift, the best thing you can do is help fund our honeymoon. We have big plans and zero shame in admitting we need a little help pulling them off. You can make a transfer to:</p>
 
         <div class="gift-card">
@@ -777,14 +693,7 @@
        FOOTER
   ══════════════════════════════════════════════════ -->
   <footer>
-    <p>
-      Gràcies per ser part del nostre dia
-      <span class="footer-sep"></span>
-      Gracias por ser parte de nuestro día
-      <span class="footer-sep"></span>
-      Thank you for being part of our day
-    </p>
-    <span class="hearts">♡ ♡ ♡</span>
+    <p>Thank you for being part of our day ♡ ♡ ♡</p>
   </footer>
 
 
@@ -792,38 +701,29 @@
        JS — Carousel
   ══════════════════════════════════════════════════ -->
   <script>
-    /* ─────────────────────────────────────────────────────────────
-       PHOTO CAROUSEL
-       To add real photos: put photo1.jpg, photo2.jpg, … next to
-       index.html and add the filenames to the `photos` array below.
-       Leave the array empty (or with only placeholders) to keep the
-       warm-tone placeholder tiles.
-    ───────────────────────────────────────────────────────────── */
-
     const photos = [
-      'images/foto2015.jpeg',
-      'images/foto2016.jpeg',
-      'images/foto2017.jpeg',
-      'images/foto2018.JPG',
-      'images/foto2019.jpg',
-      'images/foto2020.jpg',
-      'images/foto2021.jpg',
-      'images/foto2022.jpg',
-      'images/foto2023.jpg',
-      'images/foto2024.jpg',
-      'images/foto2025.jpg',
-      'images/foto2026.jpg',
+      '../images/foto2015.jpeg',
+      '../images/foto2016.jpeg',
+      '../images/foto2017.jpeg',
+      '../images/foto2018.JPG',
+      '../images/foto2019.jpg',
+      '../images/foto2020.jpg',
+      '../images/foto2021.jpg',
+      '../images/foto2022.jpg',
+      '../images/foto2023.jpg',
+      '../images/foto2024.jpg',
+      '../images/foto2025.jpg',
+      '../images/foto2026.jpg',
       null, // "Many more to come" text slide
     ];
     const photoYears = ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
 
-    /* Warm placeholder colours used when no photos are provided */
     const placeholderColors = [
-      ['#D4A58A', '#B07A62'],   // warm terracotta
-      ['#C4956A', '#9A6B45'],   // amber
-      ['#D9B8A0', '#B08060'],   // sand
-      ['#C8A090', '#A07060'],   // dusty rose
-      ['#BFA882', '#8F7852'],   // khaki gold
+      ['#D4A58A', '#B07A62'],
+      ['#C4956A', '#9A6B45'],
+      ['#D9B8A0', '#B08060'],
+      ['#C8A090', '#A07060'],
+      ['#BFA882', '#8F7852'],
     ];
 
     const track     = document.getElementById('carouselTrack');
@@ -835,7 +735,6 @@
     let currentIndex = 0;
     let timer        = null;
 
-    /* Build slides */
     const slides = [];
     for (let i = 0; i < slideCount; i++) {
       let el;
@@ -852,7 +751,7 @@
         } else {
           const img = document.createElement('img');
           img.src = photos[i];
-          img.alt = `Foto ${i + 1} d'Olivia i Miguel`;
+          img.alt = `Photo ${i + 1} of Olivia and Miguel`;
           img.draggable = false;
           img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;';
           img.addEventListener('load', function() {
@@ -883,13 +782,12 @@
       slides.push(el);
     }
 
-    /* Build dots */
     const dots = [];
     for (let i = 0; i < slideCount; i++) {
       const btn = document.createElement('button');
       btn.className  = 'dot';
       btn.setAttribute('role', 'tab');
-      btn.setAttribute('aria-label', `Diapositiva ${i + 1}`);
+      btn.setAttribute('aria-label', `Slide ${i + 1}`);
       btn.addEventListener('click', () => goTo(i));
       dotsWrap.appendChild(btn);
       dots.push(btn);
@@ -911,10 +809,8 @@
       timer = setInterval(next, 4000);
     }
 
-    /* Tap / click to advance */
     track.addEventListener('click', next);
 
-    /* Touch swipe support */
     let touchStartX = 0;
     track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
@@ -922,11 +818,9 @@
       if (Math.abs(dx) > 40) dx < 0 ? next() : goTo(currentIndex - 1);
     }, { passive: true });
 
-    /* Pause on hover (desktop) */
     track.addEventListener('mouseenter', () => clearInterval(timer));
     track.addEventListener('mouseleave', resetTimer);
 
-    /* Kick off */
     goTo(0);
   </script>
 
