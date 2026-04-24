@@ -827,7 +827,12 @@
     }
 
     /* Tap / click to advance */
-    track.addEventListener('click', next);
+    track.addEventListener('click', e => {
+      e.offsetX < track.offsetWidth / 2 ? goTo(currentIndex - 1) : next();
+    });
+    track.addEventListener('mousemove', e => {
+      track.style.cursor = e.offsetX < track.offsetWidth / 2 ? 'w-resize' : 'e-resize';
+    });
 
     /* Touch swipe support */
     let touchStartX = 0;
